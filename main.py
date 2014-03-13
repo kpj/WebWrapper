@@ -11,7 +11,7 @@ def main():
 	view = python.gui.Viewer()
 
 	# TODO: remove this line
-	jsi = python.js_interface.JavascriptInterface()
+	jsi = python.js_interface.JavascriptInterface(view)
 	view.page().mainFrame().addToJavaScriptWindowObject("PyInterface",jsi)
 
 	main_window = python.gui.MainWindow(view)

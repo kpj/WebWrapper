@@ -6,6 +6,11 @@ from PyQt4 import QtCore, QtGui
 class JavascriptInterface(QtCore.QObject):
 	"""Provides e.g. fs-access in javascript itself
 	"""
+	def __init__(self, view):
+		super(JavascriptInterface, self).__init__()
+
+		self.view = view
+
 	@QtCore.pyqtSlot(str)
 	def log(self, msg):
 		"""Easy logging for javascript (prints to terminal)
@@ -48,3 +53,13 @@ class JavascriptInterface(QtCore.QObject):
 		"""
 		with open(fname, 'w') as fd:
 			fd.write(content)
+
+	@QtCore.pyqtSlot(str)
+	def execute0(self, func_name):
+		print('Calling "' + func_name + '"')
+		getattr(self.view, func_name)()
+
+	@QtCore.pyqtSlot(str, str)
+	def execute1(self, func_name, arg):
+		print('Calling "' + func_name + '" with "' + arg + '"')
+		getattr(self.view, func_name)(arg)

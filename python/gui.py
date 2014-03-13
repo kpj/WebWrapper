@@ -33,8 +33,8 @@ class MainWindow(QtGui.QMainWindow):
 		for a in self.getFileMenu():
 			fileMenu.addAction(a)
 		
-		self.setWindowTitle('WebWrapper')    
-		self.show()
+		getattr(self, 'setWindowTitle')('WebWrapper')    
+		getattr(self, 'show')()
 
 	def getFileMenu(self):
 		actions = []

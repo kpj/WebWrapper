@@ -56,9 +56,7 @@ class Viewer(QtWebKit.QWebView):
 			QtCore.SIGNAL('loadFinished(bool)'), 
 			self.loadFinished
 		)
-		self.connect(
-			self.page().mainFrame(), 
-			QtCore.SIGNAL('javaScriptWindowObjectCleared()'), 
+		self.page().mainFrame().javaScriptWindowObjectCleared.connect(
 			self.javaScriptWindowObjectCleared
 		)
 
@@ -89,6 +87,7 @@ class Viewer(QtWebKit.QWebView):
 	def javaScriptWindowObjectCleared(self):
 		#self.page().mainFrame().addToJavaScriptWindowObject(
 		#	"PyInterface",
-		#	python.js_interface.JavascriptInterface()
+		#	python.js_interface.JavascriptInterface(self)
 		#)
+		# does not work -> PyInterface = null (in js)
 		pass

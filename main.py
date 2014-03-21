@@ -9,20 +9,6 @@ def main():
 
 	# create main window
 	view = python.gui.Viewer()
-
-	#view.page().mainFrame().addToJavaScriptWindowObject(
-	#	"PyInterface",
-	#	python.js_interface.JavascriptInterface(view)
-	#)
-	# does not work -> PyInterface = null (in js)
-
-	# only the following approach works
-	jsi = python.js_interface.JavascriptInterface(view)
-	view.page().mainFrame().addToJavaScriptWindowObject(
-		"PyInterface",
-		jsi
-	)
-
 	main_window = python.gui.MainWindow(view)
 
 	sys.exit(app.exec_())

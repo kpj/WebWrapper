@@ -1,6 +1,6 @@
 import os, os.path
 import json
-from PyQt4 import QtCore, QtGui
+from PyQt5 import QtCore, QtWidgets
 
 
 class JavascriptInterface(QtCore.QObject):
@@ -28,14 +28,14 @@ class JavascriptInterface(QtCore.QObject):
 	def show_open_file_dialog(self, title):
 		"""Asks for file and returns file name
 		"""
-		fname = QtGui.QFileDialog.getOpenFileName(None, title, '.')
+		fname = QtWidgets.QFileDialog.getOpenFileName(None, title, '.')
 		return fname
 
 	@QtCore.pyqtSlot(str, result=str)
 	def show_open_directory_dialog(self, title):
 		"""Asks for dir and returns dir name
 		"""
-		dname = QtGui.QFileDialog.getExistingDirectory(None, title, '.')
+		dname = QtWidgets.QFileDialog.getExistingDirectory(None, title, '.')
 		return dname
 
 	@QtCore.pyqtSlot(str, result=str)

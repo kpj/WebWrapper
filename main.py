@@ -1,11 +1,11 @@
 import sys
-from PyQt4 import QtGui, QtCore
+from PyQt5 import QtWidgets
 
 import python.gui, python.js_interface
 
 
 def main():
-	app = QtGui.QApplication(sys.argv)
+	app = QtWidgets.QApplication(sys.argv)
 
 	# create main window
 	view = python.gui.Viewer()

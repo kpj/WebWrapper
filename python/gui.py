@@ -1,10 +1,10 @@
 import json
-from PyQt4 import QtWebKit, QtCore, QtGui
+from PyQt5 import QtWebKitWidgets, QtCore, QtGui, QtWidgets
 
 import python.js_interface
 
 
-class MainWindow(QtGui.QMainWindow):
+class MainWindow(QtWidgets.QMainWindow):
 	def __init__(self, view):
 		super(MainWindow, self).__init__()
 
@@ -47,15 +47,11 @@ class MainWindow(QtGui.QMainWindow):
 
 		return actions
 
-class Viewer(QtWebKit.QWebView):
+class Viewer(QtWebKitWidgets.QWebView):
 	def __init__(self):
-		QtWebKit.QWebView.__init__(self)
+		QtWebKitWidgets.QWebView.__init__(self)
 
-		self.connect(
-			self.page().mainFrame(), 
-			QtCore.SIGNAL('loadFinished(bool)'), 
-			self.loadFinished
-		)
+		self.page().mainFrame().loadFinished.connect(self.loadFinished)
 		self.page().mainFrame().javaScriptWindowObjectCleared.connect(
 			self.javaScriptWindowObjectCleared
 		)
@@ -74,12 +70,12 @@ class Viewer(QtWebKit.QWebView):
 	def keyPressEvent(self, e):
 		self.evtHandler("keypress", [str(e.key())])
 
-		QtWebKit.QWebView.keyPressEvent(self, e)
+		QtWebKitWidgets.QWebView.keyPressEvent(self, e)
 
 	def keyReleaseEvent(self, e):
 		self.evtHandler("keyrelease", [str(e.key())])
 
-		QtWebKit.QWebView.keyReleaseEvent(self, e)
+		QtWebKitWidgets.QWebView.keyReleaseEvent(self, e)
 
 	def loadFinished(self, ok):
 		self.show()

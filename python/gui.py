@@ -1,4 +1,4 @@
-import json
+import json, os
 from PyQt5 import QtWebKitWidgets, QtCore, QtGui, QtWidgets
 
 import python.js_interface
@@ -58,7 +58,7 @@ class Viewer(QtWebKitWidgets.QWebView):
 			self.javaScriptWindowObjectCleared
 		)
 
-		self.load(QtCore.QUrl('./view/index.html'))
+		self.load(QtCore.QUrl('file:///' + os.path.abspath('./view/index.html')))
 
 	def evtHandler(self, key, args):
 		args = json.dumps(args)

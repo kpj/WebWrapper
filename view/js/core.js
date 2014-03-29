@@ -6,6 +6,5 @@ $(document).ready(function() {
 });
 
 function test() {
-	console.log("testblalbabla");
-	PyInterface.execute('setWindowTitle', ('My Title'));
+	PyInterface.execute('setWindowTitle', ['My Title']);
 }

@@ -54,7 +54,9 @@ class JavascriptInterface(QtCore.QObject):
 		with open(fname, 'w') as fd:
 			fd.write(content)
 
-	@QtCore.pyqtSlot(str, tuple)
+	@QtCore.pyqtSlot(str, QtCore.QByteArray)
 	def execute(self, func_name, args):
-		print('Calling "' + func_name + '" with "' + args + '"')
+		args = [e.data().decode('utf-8') for e in args.split(',')]
+
+		print('Calling "' + func_name + '" with "' + str(args) + '"')
 		getattr(self.view, func_name)(*args)

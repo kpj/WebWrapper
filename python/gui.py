@@ -1,8 +1,6 @@
 import json, os
 from PyQt5 import QtWebKitWidgets, QtCore, QtGui, QtWidgets
 
-import python.js_interface
-
 
 class MainWindow(QtWidgets.QMainWindow):
 	def __init__(self, view):
@@ -32,9 +30,6 @@ class MainWindow(QtWidgets.QMainWindow):
 		fileMenu = menubar.addMenu('&File')
 		for a in self.getFileMenu():
 			fileMenu.addAction(a)
-		
-		getattr(self, 'setWindowTitle')('WebWrapper')    
-		getattr(self, 'show')()
 
 	def getFileMenu(self):
 		actions = []
@@ -50,8 +45,6 @@ class MainWindow(QtWidgets.QMainWindow):
 class Viewer(QtWebKitWidgets.QWebView):
 	def __init__(self):
 		QtWebKitWidgets.QWebView.__init__(self)
-
-		self.js_interface = python.js_interface.JavascriptInterface(self)
 
 		self.page().mainFrame().loadFinished.connect(self.loadFinished)
 		self.page().mainFrame().javaScriptWindowObjectCleared.connect(
@@ -81,6 +74,9 @@ class Viewer(QtWebKitWidgets.QWebView):
 
 	def loadFinished(self, ok):
 		self.show()
+
+	def set_js_interface(self, jsi):
+		self.js_interface = jsi
 
 	def javaScriptWindowObjectCleared(self):
 		self.page().mainFrame().addToJavaScriptWindowObject(

@@ -6,9 +6,10 @@ from PyQt5 import QtCore, QtWidgets
 class JavascriptInterface(QtCore.QObject):
 	"""Provides e.g. fs-access in javascript itself
 	"""
-	def __init__(self, view):
+	def __init__(self, window, view):
 		super(JavascriptInterface, self).__init__()
 
+		self.window = window
 		self.view = view
 
 	@QtCore.pyqtSlot(str)
@@ -54,9 +55,19 @@ class JavascriptInterface(QtCore.QObject):
 		with open(fname, 'w') as fd:
 			fd.write(content)
 
-	@QtCore.pyqtSlot(str, QtCore.QByteArray)
-	def execute(self, func_name, args):
+	@QtCore.pyqtSlot(str, str, QtCore.QByteArray)
+	def execute(self, target, func_name, args):
 		args = [e.data().decode('utf-8') for e in args.split(',') if len(e) > 0]
 
-		print('Calling "' + func_name + '" with "' + str(args) + '"')
-		getattr(self.view, func_name)(*args)
+		obj = None
+		if target == 'window':
+			obj = self.window
+		elif target == 'view':
+			obj = self.view
+
+		print('Calling "' + func_name + '" with "' + str(args) + '" on "' + target + '"')
+		
+		if obj:
+			getattr(obj, func_name)(*args)
+		else:
+			print('> Invalid target')

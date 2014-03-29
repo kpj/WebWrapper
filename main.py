@@ -9,7 +9,11 @@ def main():
 
 	# create main window
 	view = python.gui.Viewer()
-	main_window = python.gui.MainWindow(view)
+	window = python.gui.MainWindow(view)
+
+	# create js interface
+	jsi = python.js_interface.JavascriptInterface(window, view)
+	view.set_js_interface(jsi)
 
 	sys.exit(app.exec_())
 

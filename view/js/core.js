@@ -1,10 +1,4 @@
 $(document).ready(function() {
-	//PyInterface.execute('setWindowTitle', ('My Title'));
-	//PyInterface.execute('show', ());
-
-	alert("done");
+	PyInterface.execute('window', 'setWindowTitle', ['My Title']);
+	PyInterface.execute('window', 'show', []);
 });
-
-function test() {
-	PyInterface.execute('setWindowTitle', ['My Title']);
-}

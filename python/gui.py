@@ -1,5 +1,5 @@
 import json, os
-from PyQt5 import QtWebKitWidgets, QtCore, QtGui, QtWidgets
+from PyQt5 import QtWebKitWidgets, QtCore, QtWidgets
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -9,9 +9,7 @@ class MainWindow(QtWidgets.QMainWindow):
 		self.installEventFilter(self)
 
 		self.view = view
-
 		self.setCentralWidget(view)
-		self.initUI()
 
 	def eventFilter(self, object, event):
 		if event.type() == QtCore.QEvent.WindowActivate:
@@ -21,26 +19,27 @@ class MainWindow(QtWidgets.QMainWindow):
 
 		return False
 
-	def initUI(self):
-		# TODO: move this to javascript
+	def gen_event_handler(self, event):
+		def func():
+			self.view.evtHandler(event, [])
+		return func
 
+	def build_menu(self, data):
 		self.statusBar()
-
 		menubar = self.menuBar()
-		fileMenu = menubar.addMenu('&File')
-		for a in self.getFileMenu():
-			fileMenu.addAction(a)
 
-	def getFileMenu(self):
-		actions = []
+		for menu_d in data:
+			menu = menubar.addMenu(menu_d['name'])
 
-		#openFileAction = QtGui.QAction('&Open File', self)        
-		#openFileAction.setShortcut('Ctrl+O')
-		#openFileAction.setStatusTip('Open new file')
-		#openFileAction.triggered.connect(self.openFileAction)
-		#actions.append(openFileAction)
+			for entry in menu_d['items']:
+				tmp = QtWidgets.QAction(entry['name'], self)
+				tmp.setShortcut(entry['shortcut'])
+				tmp.setStatusTip(entry['statustip'])
+				tmp.triggered.connect(
+					self.gen_event_handler(entry['trigger'])
+				)
 
-		return actions
+				menu.addAction(tmp)
 
 class Viewer(QtWebKitWidgets.QWebView):
 	def __init__(self):

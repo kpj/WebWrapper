@@ -1,5 +1,6 @@
 import os, os.path
 import json
+
 from PyQt5 import QtCore, QtWidgets
 
 
@@ -54,6 +55,26 @@ class JavascriptInterface(QtCore.QObject):
 		"""
 		with open(fname, 'w') as fd:
 			fd.write(content)
+
+	@QtCore.pyqtSlot(str)
+	def create_menu(self, data):
+		"""Turns given data structure into menu
+		   structure:
+		    [
+		   		{
+		   			"name": "foo",
+		   			"items": [
+		   				{
+		   					"name": "bar",
+		   					"shortcut": "Ctrl+O",
+		   					"statustip": "baz",
+		   					"trigger": "func_name"
+		   				}
+		   			]
+		   		}
+		   	]
+		"""
+		self.window.build_menu(json.loads(data))
 
 	@QtCore.pyqtSlot(str, str, QtCore.QByteArray)
 	def execute(self, target, func_name, args):

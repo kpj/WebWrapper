@@ -9,12 +9,6 @@ import json
 from PyQt5 import QtCore, QtWidgets
 
 
-## A function
-#
-# blaaaa
-def foo():
-	print("blub")
-
 class JavascriptInterface(QtCore.QObject):
 	"""
 	This provides sophisticated functions for javascript

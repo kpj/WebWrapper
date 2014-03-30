@@ -6,12 +6,10 @@ This framework serves as a simple way to embed web applications into a single, l
 ## Usage
 
 1. Edit ``./config.json`` such that it points to your index.html
-2. Your index.html has to include the following files in the same order:
-    * ``./view/libs/EventEmitter/EventEmitter.js``
-    * ``./view/libs/jquery-2.1.0.min.js``
-    * ``./view/js/events.js``
-    * ``./view/js/core.js``
-3. Check the documentation for a list of provided methods
+2. Your index.html has to include the following file
+    * ``./view/include.js``
+3. Call ``initWrapper`` and provide a callback to be executed when all sources are loaded
+4. Check the documentation for a list of provided methods
 
 
 ## Documentation

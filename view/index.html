@@ -1,24 +1,20 @@
 <html>
 <head>
-	<!-- for debug -->
-	<script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script>
-
 	<title>View</title>
 
 	<!-- own layout -->
 	<link href="./css/layout.css" rel="stylesheet" />
 
-	<!-- external utilities -->
-	<script type="text/javascript" src="./libs/EventEmitter/EventEmitter.js"></script>
-	<script type="text/javascript" src="./libs/jquery-2.1.0.min.js"></script>
-
-	<!-- own scripts -->
-	<script type="text/javascript" src="./js/events.js"></script>
-
-	<!-- own scripts -->
-	<script type="text/javascript" src="./js/core.js"></script>
+	<!-- javascript sources -->
+	<script type="text/javascript" src="./include.js"></script>
 </head>
 <body>
 	This could be your html file.
+
+	<script>
+		initWrapper(function() {
+			alert("Loaded");
+		});
+	</script>
 </body>
 </html>

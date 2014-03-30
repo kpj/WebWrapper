@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['gui',['gui',['../namespacepython_1_1gui.html',1,'python']]],
-  ['js_5finterface',['js_interface',['../namespacepython_1_1js__interface.html',1,'python']]],
-  ['pyqt_20web_20wrapper',['PyQt Web Wrapper',['../md_README.html',1,'']]],
-  ['python',['python',['../namespacepython.html',1,'']]]
+  ['read_5ffile',['read_file',['../classpython_1_1js__interface_1_1JavascriptInterface.html#a3b6d6fc84f5f173e373a922f33c0bc11',1,'python::js_interface::JavascriptInterface']]],
+  ['readme_2emd',['README.md',['../README_8md.html',1,'']]]
 ];

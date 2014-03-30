@@ -15,12 +15,4 @@ This framework serves as a simple way to embed web applications into a single, l
 ## Documentation
 
 An object called``PyInterface`` which allows access to more sophisticated functions is provided in javascript.
-These functions are listed here.
-
-### log(str)
-#### Description
-Easy logging to cmd-line using javascript.
-#### Example
-    PyInterface.log("Everything is fine so far...");
-    
-### more to come
+These functions are listed [here](..).

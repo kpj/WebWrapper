@@ -4,11 +4,12 @@ OUTPUT_DIRECTORY		=	"docs"
 GENERATE_LATEX			=	NO
 
 FILTER_SOURCE_FILES		=	YES
-INPUT_FILTER			=	"doxypy.py"
+INPUT_FILTER			=	"python2 /usr/bin/doxypy.py"
 
 OPTIMIZE_OUTPUT_JAVA	=	YES
 EXTRACT_ALL				=	YES
 RECURSIVE				=	YES
+#QUIET					=	YES
 
-FILE_PATTERNS			=	"*.py"
+#FILE_PATTERNS			=	"*.py"
 #INPUT					=	"python/js_interface.py"

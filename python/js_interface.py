@@ -1,6 +1,6 @@
 """@package python
-Javascript interface which provides access to the filesystem, PyQt and much more.
 
+Javascript interface which provides access to the filesystem, PyQt and much more.
 """
 
 import os, os.path
@@ -9,8 +9,17 @@ import json
 from PyQt5 import QtCore, QtWidgets
 
 
+## A function
+#
+# blaaaa
+def foo():
+	print("blub")
+
 class JavascriptInterface(QtCore.QObject):
-	"""@brief Provides sophisticated functions for javascript
+	"""
+	This provides sophisticated functions for javascript
+	@author kpj
+	@version 0.1
 	"""
 	def __init__(self, window, view):
 		super(JavascriptInterface, self).__init__()

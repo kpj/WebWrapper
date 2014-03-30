@@ -1,3 +1,8 @@
+"""@package python
+Javascript interface which provides access to the filesystem, PyQt and much more.
+
+"""
+
 import os, os.path
 import json
 
@@ -5,7 +10,7 @@ from PyQt5 import QtCore, QtWidgets
 
 
 class JavascriptInterface(QtCore.QObject):
-	"""Provides e.g. fs-access in javascript itself
+	"""@brief Provides sophisticated functions for javascript
 	"""
 	def __init__(self, window, view):
 		super(JavascriptInterface, self).__init__()
@@ -43,6 +48,10 @@ class JavascriptInterface(QtCore.QObject):
 	@QtCore.pyqtSlot(str, result=str)
 	def get_directory_content(self, path):
 		"""Returns content of given directory
+
+			@param path		Path to directory
+
+			@retval			Content of specified directory as dict of the form {"name": {"type": "dir/file"}}
 		"""
 		res = {}
 		for c in os.listdir(path):
@@ -78,6 +87,12 @@ class JavascriptInterface(QtCore.QObject):
 
 	@QtCore.pyqtSlot(str, str, QtCore.QByteArray)
 	def execute(self, target, func_name, args):
+		"""Call function on QMainWindow and QWebView from within javascript
+		
+			@param	target		'window' for QMainWindow, 'view' for QWebView
+			@param	func_name	Name of function to be called
+			@param	args		List of arguments given to specified function
+		"""
 		args = [e.data().decode('utf-8') for e in args.split(',') if len(e) > 0]
 
 		obj = None

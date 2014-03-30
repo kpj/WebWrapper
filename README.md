@@ -1,6 +1,6 @@
 # PyQt Web Wrapper
 
-This framework serves as a simple way to embed web applications into a single application.
+This framework serves as a simple way to embed web applications into a single, local application.
 
 
 ## Usage

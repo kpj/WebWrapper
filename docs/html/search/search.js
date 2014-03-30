@@ -12,8 +12,7 @@ var indexSectionsWithContent =
   2: "mp",
   3: "_gjmr",
   4: "_bcegjklmrs",
-  5: "cjvw",
-  6: "p"
+  5: "cjvw"
 };
 
 var indexSectionNames =
@@ -23,8 +22,7 @@ var indexSectionNames =
   2: "namespaces",
   3: "files",
   4: "functions",
-  5: "variables",
-  6: "pages"
+  5: "variables"
 };
 
 function convertToId(search)

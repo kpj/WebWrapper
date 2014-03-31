@@ -1,8 +1,3 @@
-"""@package python
-
-Javascript interface which provides access to the filesystem, PyQt and much more.
-"""
-
 import os, os.path
 import json
 
@@ -11,7 +6,7 @@ from PyQt5 import QtCore, QtWidgets
 
 class JavascriptInterface(QtCore.QObject):
 	"""
-	This provides sophisticated functions for javascript
+	@brief Provides sophisticated functions for javascript
 	@author kpj
 	@version 0.1
 	"""

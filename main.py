@@ -5,10 +5,14 @@ import python.gui, python.js_interface
 
 
 def main():
+	if len(sys.argv) != 2:
+		print('Usage: %s <index.html>' % sys.argv[0])
+		sys.exit(1)
+
 	app = QtWidgets.QApplication(sys.argv)
 
 	# create main window
-	view = python.gui.Viewer()
+	view = python.gui.Viewer(sys.argv[1])
 	window = python.gui.MainWindow(view)
 
 	# create js interface

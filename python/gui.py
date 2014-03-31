@@ -2,8 +2,6 @@ import json, os
 from PyQt5 import QtWebKitWidgets, QtCore, QtWidgets
 
 
-config = json.load(open('config.json', 'r'))
-
 class MainWindow(QtWidgets.QMainWindow):
 	def __init__(self, view):
 		super(MainWindow, self).__init__()
@@ -44,7 +42,7 @@ class MainWindow(QtWidgets.QMainWindow):
 				menu.addAction(tmp)
 
 class Viewer(QtWebKitWidgets.QWebView):
-	def __init__(self):
+	def __init__(self, index_file):
 		QtWebKitWidgets.QWebView.__init__(self)
 
 		self.page().mainFrame().loadFinished.connect(self.loadFinished)
@@ -52,7 +50,7 @@ class Viewer(QtWebKitWidgets.QWebView):
 			self.javaScriptWindowObjectCleared
 		)
 
-		self.load(QtCore.QUrl('file:///' + os.path.abspath(config['index'])))
+		self.load(QtCore.QUrl('file:///' + os.path.abspath(index_file)))
 
 	def evtHandler(self, key, args):
 		args = json.dumps(args)

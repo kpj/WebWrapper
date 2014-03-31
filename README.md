@@ -17,4 +17,4 @@ This framework serves as a simple way to embed web applications into a single, l
 The latest documentation can be generated using doxygen.
 
 Particularly important is the object called ``PyInterface`` which allows access to more sophisticated functions is provided in javascript.
-These functions are defined in ``./python/js_interface.py``
+These functions are defined in ``./python/js_interface.py``.

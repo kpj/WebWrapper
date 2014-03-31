@@ -207,11 +207,16 @@ var loadExternalCSS = function(url, callback, scope, preLoadHack){
 
 var root = PyInterface.get_root_dir();
 var sources = [
-	'https://getfirebug.com/firebug-lite-debug.js',
 	root + '/view/libs/EventEmitter/EventEmitter.js',
 	root + '/view/libs/jquery-2.1.0.min.js',
 	root + '/view/js/events.js'
 ];
+
+var args = JSON.parse(PyInterface.get_args());
+
+if(args.verbose) {
+	sources.unshift('https://getfirebug.com/firebug-lite-debug.js');
+}
 
 var initWrapper = function(callback) {
 	loadExternalJS(sources, callback);

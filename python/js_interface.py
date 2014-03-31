@@ -15,17 +15,43 @@ class JavascriptInterface(QtCore.QObject):
 	@author kpj
 	@version 0.1
 	"""
-	def __init__(self, window, view):
+	def __init__(self, window, view, args):
 		super(JavascriptInterface, self).__init__()
 
 		self.window = window
 		self.view = view
+		self.args = args
 
 	@QtCore.pyqtSlot(str)
 	def log(self, msg):
 		"""Easy logging for javascript (prints to terminal)
 		"""
 		print(msg)
+
+	@QtCore.pyqtSlot()
+	def shutdown(self):
+		"""Quits Qt application
+		"""
+		app = QtWidgets.QApplication.instance()
+		app.closeAllWindows()
+
+	@QtCore.pyqtSlot(result=str)
+	def get_root_dir(self):
+		"""Returns root directory of web wrapper
+		"""
+		return os.path.abspath(
+			os.path.join(
+				os.path.dirname(
+					os.path.realpath(__file__)
+				), '..'
+			)
+		)
+
+	@QtCore.pyqtSlot(result=str)
+	def get_args(self):
+		"""Returns cmd-line arguments provided to python
+		"""
+		return json.dumps(self.args)
 
 	@QtCore.pyqtSlot(str, result=str)
 	def read_file(self, fname):
@@ -87,25 +113,6 @@ class JavascriptInterface(QtCore.QObject):
 		   	]
 		"""
 		self.window.build_menu(json.loads(data))
-
-	@QtCore.pyqtSlot()
-	def shutdown(self):
-		"""Quits Qt application
-		"""
-		app = QtWidgets.QApplication.instance()
-		app.closeAllWindows()
-
-	@QtCore.pyqtSlot(result=str)
-	def get_root_dir(self):
-		"""Returns root directory of web wrapper
-		"""
-		return os.path.abspath(
-			os.path.join(
-				os.path.dirname(
-					os.path.realpath(__file__)
-				), '..'
-			)
-		)
 
 	@QtCore.pyqtSlot(str, str, QtCore.QByteArray)
 	def execute(self, target, func_name, args):

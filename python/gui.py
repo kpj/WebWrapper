@@ -42,7 +42,7 @@ class MainWindow(QtWidgets.QMainWindow):
 				menu.addAction(tmp)
 
 class Viewer(QtWebKitWidgets.QWebView):
-	def __init__(self, index_file):
+	def __init__(self, args):
 		QtWebKitWidgets.QWebView.__init__(self)
 
 		self.page().mainFrame().loadFinished.connect(self.loadFinished)
@@ -50,7 +50,7 @@ class Viewer(QtWebKitWidgets.QWebView):
 			self.javaScriptWindowObjectCleared
 		)
 
-		self.load(QtCore.QUrl('file:///' + os.path.abspath(index_file)))
+		self.load(QtCore.QUrl('file:///' + os.path.abspath(args['file'])))
 
 	def evtHandler(self, key, args):
 		args = json.dumps(args)

@@ -20,13 +20,13 @@
 
 			struct = [
 				{
-					"name": "foo",
+					"name": "&File",
 					"items": [
 						{
-							"name": "bar",
-							"shortcut": "Ctrl+O",
-							"statustip": "baz",
-							"trigger": "func_name"
+							"name": "Quit",
+							"shortcut": "Ctrl+Q",
+							"statustip": "Quit PyQt application",
+							"trigger": "exitApplication"
 						}
 					]
 				}
@@ -38,8 +38,9 @@
 			/*
 			 * Setup event handling
 			 */
-			Events.on('func_name', function(e) {
-				alert('Event handled');
+			Events.on('exitApplication', function(e) {
+				PyInterface.log("Exiting");
+				PyInterface.shutdown();
 			});
 		});
 	</script>

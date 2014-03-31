@@ -88,6 +88,13 @@ class JavascriptInterface(QtCore.QObject):
 		"""
 		self.window.build_menu(json.loads(data))
 
+	@QtCore.pyqtSlot()
+	def shutdown(self):
+		"""Quits Qt application
+		"""
+		app = QtWidgets.QApplication.instance()
+		app.closeAllWindows()
+
 	@QtCore.pyqtSlot(result=str)
 	def get_root_dir(self):
 		"""Returns root directory of web wrapper

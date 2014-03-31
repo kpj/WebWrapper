@@ -88,6 +88,18 @@ class JavascriptInterface(QtCore.QObject):
 		"""
 		self.window.build_menu(json.loads(data))
 
+	@QtCore.pyqtSlot(result=str)
+	def get_root_dir(self):
+		"""Returns root directory of web wrapper
+		"""
+		return os.path.abspath(
+			os.path.join(
+				os.path.dirname(
+					os.path.realpath(__file__)
+				), '..'
+			)
+		)
+
 	@QtCore.pyqtSlot(str, str, QtCore.QByteArray)
 	def execute(self, target, func_name, args):
 		"""Call function on QMainWindow and QWebView from within javascript

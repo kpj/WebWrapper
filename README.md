@@ -14,7 +14,7 @@ This framework serves as a simple way to embed web applications into a single, l
 
 ## Documentation
 
-An object called``PyInterface`` which allows access to more sophisticated functions is provided in javascript.
-These functions are listed [here](https://rawgithub.com/kpj/WebWrapper/master/docs/html/classpython_1_1js__interface_1_1JavascriptInterface.html).
+The latest documentation can be generated using doxygen.
 
-For a general overview, start [here](https://rawgithub.com/kpj/WebWrapper/master/docs/html/index.html).
+Particularly important is the object called ``PyInterface`` which allows access to more sophisticated functions is provided in javascript.
+These functions are defined in ``./python/js_interface.py``

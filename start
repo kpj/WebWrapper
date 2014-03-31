@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python3 main.py "./view/index.html"
+python3 main.py "./view/index.html" "$@"

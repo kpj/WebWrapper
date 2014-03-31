@@ -38,7 +38,7 @@ class JavascriptInterface(QtCore.QObject):
 	def show_open_file_dialog(self, title):
 		"""Asks for file and returns file name
 		"""
-		fname = QtWidgets.QFileDialog.getOpenFileName(None, title, '.')
+		fname = QtWidgets.QFileDialog.getOpenFileName(None, title, '.')[0]
 		return fname
 
 	@QtCore.pyqtSlot(str, result=str)

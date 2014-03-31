@@ -210,8 +210,7 @@ var sources = [
 	'https://getfirebug.com/firebug-lite-debug.js',
 	root + '/view/libs/EventEmitter/EventEmitter.js',
 	root + '/view/libs/jquery-2.1.0.min.js',
-	root + '/view/js/events.js',
-	root + '/view/js/core.js'
+	root + '/view/js/events.js'
 ];
 
 var initWrapper = function(callback) {

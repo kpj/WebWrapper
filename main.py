@@ -1,5 +1,5 @@
 import sys
-from PyQt5 import QtWidgets
+from PyQtX import QtWidgets
 
 import python.gui, python.js_interface, python.arg_parser
 

@@ -1,14 +1,14 @@
 import os, os.path
 import json
 
-from PyQt5 import QtCore, QtWidgets
+from PyQtX import QtCore, QtWidgets
 
 
 class JavascriptInterface(QtCore.QObject):
 	"""
 	@brief Provides sophisticated functions for javascript
 	@author kpj
-	@version 0.1
+	@version 0.1.0
 	"""
 	def __init__(self, window, view, args):
 		"""Also calls constructor of parent
@@ -132,7 +132,7 @@ class JavascriptInterface(QtCore.QObject):
 		   		}
 		   	]
 		"""
-		self.window.build_menu(json.loads(data))
+		self.window.build_menu(json.loads(str(data)))
 
 	@QtCore.pyqtSlot(str, QtCore.QByteArray, result=str)
 	def prompt(self, msg, options):
@@ -168,6 +168,6 @@ class JavascriptInterface(QtCore.QObject):
 		print('Calling "' + func_name + '" with "' + str(args) + '" on "' + target + '"')
 		
 		if obj:
-			getattr(obj, func_name)(*args)
+			getattr(obj, str(func_name))(*args)
 		else:
 			print('> Invalid target')

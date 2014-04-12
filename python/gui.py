@@ -1,5 +1,5 @@
 import json, os
-from PyQt5 import QtWebKitWidgets, QtCore, QtWidgets
+from PyQtX import QtWebKitWidgets, QtCore, QtWidgets
 
 
 class MainWindow(QtWidgets.QMainWindow):

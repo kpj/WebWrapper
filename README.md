@@ -2,6 +2,12 @@
 
 This framework serves as a simple way to embed web applications into a single, local application.
 
+## Installation
+
+Install the needed [PyQtX](https://github.com/kpj/PyQtX) package using
+
+    pip install PyQtX
+
 
 ## Usage
 

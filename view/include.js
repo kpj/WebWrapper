@@ -212,10 +212,10 @@ var sources = [
 	root + '/view/js/events.js'
 ];
 
-var args = JSON.parse(PyInterface.get_args());
+/*var args = JSON.parse(PyInterface.get_args());
 if(args.verbose) {
 	sources.unshift('https://getfirebug.com/firebug-lite-debug.js');
-}
+}*/
 
 var initWrapper = function(callback) {
 	loadExternalJS(sources, callback);

@@ -1,5 +1,5 @@
 import json, os
-from PyQtX import QtWebKitWidgets, QtCore, QtWidgets
+from PyQtX import QtWebKitWidgets, QtCore, QtWidgets, QtWebKit
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -50,7 +50,17 @@ class Viewer(QtWebKitWidgets.QWebView):
 			self.javaScriptWindowObjectCleared
 		)
 
-		self.load(QtCore.QUrl('file:///' + os.path.abspath(args['file'])))
+		self.file = QtCore.QUrl('file:///' + os.path.abspath(args['file']))
+		self.load(self.file)
+
+		if args['verbose']:
+			QtWebKit.QWebSettings.globalSettings().setAttribute(
+				QtWebKit.QWebSettings.DeveloperExtrasEnabled,
+				True
+			)
+			self.web_inspector = QtWebKitWidgets.QWebInspector()
+			self.web_inspector.setPage(self.page())
+			self.web_inspector.show()
 
 	def evtHandler(self, key, args):
 		args = json.dumps(args)

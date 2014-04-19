@@ -217,6 +217,8 @@ if(args.verbose) {
 	sources.unshift('https://getfirebug.com/firebug-lite-debug.js');
 }*/
 
-var initWrapper = function(callback) {
-	loadExternalJS(sources, callback);
+var initWrapper = function(additional_sources, callback) {
+	var toLoad = sources.concat(additional_sources);
+	console.log("Loading", toLoad);
+	loadExternalJS(toLoad, callback);
 }

@@ -99,7 +99,7 @@ class JavascriptInterface(QtCore.QObject):
 		"""
 		res = {}
 		for c in os.listdir(path):
-			res[c] = {'type': 'dir' if os.path.isdir(c) else 'file'}
+			res[c] = {'type': 'dir' if os.path.isdir(os.path.join(path, c)) else 'file'}
 		return json.dumps(res)
 
 	@QtCore.pyqtSlot(str, str)

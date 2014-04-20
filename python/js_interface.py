@@ -98,6 +98,7 @@ class JavascriptInterface(QtCore.QObject):
 
 			@retval	result	Content of specified directory as dict of the form {"name": {"type": "dir/file"}}
 		"""
+		path = str(path)
 		res = {}
 		for c in os.listdir(path):
 			res[c] = {'type': 'dir' if os.path.isdir(os.path.join(path, c)) else 'file'}

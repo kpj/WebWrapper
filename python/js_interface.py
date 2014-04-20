@@ -69,7 +69,8 @@ class JavascriptInterface(QtCore.QObject):
 			@retval result 	Content of file
 		"""
 
-		return open(fname, 'r').read()
+		content = open(fname, 'rb').read().decode("utf-8", "replace")
+		return content
 
 	@QtCore.pyqtSlot(str, result=str)
 	def show_open_file_dialog(self, title):

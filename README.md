@@ -22,5 +22,5 @@ Install the needed [PyQtX](https://github.com/kpj/PyQtX) package using
 
 The latest documentation can be generated using doxygen.
 
-Particularly important is the object called ``PyInterface`` which allows access to more sophisticated functions is provided in javascript.
+Particularly important is the object called ``PyInterface`` which allows access to more sophisticated (python) functions from javascript.
 These functions are defined in ``./python/js_interface.py``.

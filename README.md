@@ -12,7 +12,7 @@ Install the needed [PyQtX](https://github.com/kpj/PyQtX) package using
 ## Usage
 
 1. Call ``main.py`` and provide your main html file as an argument ([example](https://github.com/kpj/WebWrapper/blob/master/start))
-2. Your index.html has to include the following file
+2. Your ``index.html`` has to include the following file
     * ``./view/include.js``
 3. Call ``initWrapper`` and provide additional sources as well as a callback to be executed when all sources are loaded
 4. Check the documentation for a list of provided methods
